@@ -50,7 +50,7 @@ export default function ServicesPage() {
             <article
               id={s.id}
               aria-labelledby={`${s.id}-title`}
-              className="edge group relative grid scroll-mt-28 gap-8 overflow-hidden rounded-[2rem] bg-ink-900/80 p-6 sm:p-10 lg:grid-cols-[auto_1fr_1fr] lg:gap-12"
+              className="edge group relative grid grid-cols-1 scroll-mt-28 gap-8 overflow-hidden rounded-[2rem] bg-ink-900/80 p-6 sm:p-10 lg:grid-cols-[auto_1fr_1fr] lg:gap-12"
             >
               <div
                 className={`pointer-events-none absolute h-72 w-72 rounded-full blur-3xl ${

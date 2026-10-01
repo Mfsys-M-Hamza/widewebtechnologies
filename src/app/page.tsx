@@ -54,7 +54,7 @@ export default function HomePage() {
       {/* HERO */}
       <section aria-labelledby="hero-title" className="relative overflow-hidden pt-24 sm:pt-32 lg:pt-36">
         <div className="pointer-events-none absolute inset-0 grid-texture" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-6">
+        <div className="relative mx-auto grid grid-cols-1 max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-6">
           <div>
             <Reveal>
               <p className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.04] px-3.5 py-1.5 text-xs font-medium text-muted">
@@ -109,7 +109,7 @@ export default function HomePage() {
 
       {/* EVERY SCREEN — interactive 3D workspace */}
       <section aria-labelledby="screens-title" className="mx-auto mt-20 max-w-6xl px-5 sm:mt-28 sm:px-8">
-        <div className="edge relative grid items-center gap-8 overflow-hidden rounded-[2rem] bg-ink-900/60 p-5 sm:p-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
+        <div className="edge relative grid grid-cols-1 items-center gap-8 overflow-hidden rounded-[2rem] bg-ink-900/60 p-5 sm:p-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
           <div className="pointer-events-none absolute inset-0 grid-texture opacity-60" aria-hidden="true" />
           <div className="relative">
             <HeroVisual />
@@ -202,7 +202,7 @@ export default function HomePage() {
           }
           intro="We focus on the things that make a website genuinely useful for your business and easy for your customers."
         />
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3">
           {reasons.map((r, i) => (
             <Reveal key={r.title} delay={i * 0.06} className={r.className}>
               <div className="edge group relative h-full overflow-hidden rounded-[1.6rem] bg-ink-900/80 p-7 transition hover:bg-ink-850 sm:p-8">
@@ -239,7 +239,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-title" className="mx-auto mt-28 grid max-w-6xl gap-10 px-5 sm:mt-36 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
+      <section aria-labelledby="faq-title" className="mx-auto mt-28 grid grid-cols-1 max-w-6xl gap-10 px-5 sm:mt-36 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <SectionHeading id="faq-title" eyebrow="FAQ" title="Questions, answered" intro="Short answers to common questions. Anything else? Ask us on WhatsApp." />
           <Reveal className="mt-8 hidden lg:block">

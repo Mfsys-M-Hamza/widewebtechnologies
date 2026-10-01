@@ -57,7 +57,7 @@ export default function AboutPage() {
       />
 
       {/* Who we are + mission */}
-      <section className="mx-auto mt-20 grid max-w-6xl gap-6 px-5 sm:px-8 lg:grid-cols-2" aria-label="Who we are and our mission">
+      <section className="mx-auto mt-20 grid grid-cols-1 max-w-6xl gap-6 px-5 sm:px-8 lg:grid-cols-2" aria-label="Who we are and our mission">
         <Reveal>
           <article className="edge relative h-full overflow-hidden rounded-[2rem] bg-ink-900/80 p-8 sm:p-10">
             <Compass className="h-10 w-10 text-electric-soft" aria-hidden="true" />
@@ -99,7 +99,7 @@ export default function AboutPage() {
           }
           intro="A collaborative process that keeps you informed and in control."
         />
-        <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {approach.map((a, i) => (
             <li key={a.title}>
               <Reveal delay={i * 0.07} className="h-full">
@@ -128,7 +128,7 @@ export default function AboutPage() {
             </>
           }
         />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2">
           {values.map((v, i) => (
             <Reveal key={v.title} delay={i * 0.06}>
               <div className="edge group flex h-full gap-5 rounded-[1.6rem] bg-ink-900/80 p-7">

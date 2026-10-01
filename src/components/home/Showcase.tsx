@@ -21,7 +21,7 @@ function DeviceShots({ project, large = false }: { project: ShowcaseProject; lar
           <span className="h-2 w-2 rounded-full bg-[#ff6b6b]/80" />
           <span className="h-2 w-2 rounded-full bg-[#f5c451]/80" />
           <span className="h-2 w-2 rounded-full bg-[#4ade80]/80" />
-          <span className="ml-3 truncate rounded-md bg-white/5 px-2 text-[0.62rem] leading-4 text-white/45">{host(project.url)}</span>
+          <span className="ml-3 min-w-0 truncate rounded-md bg-white/5 px-2 text-[0.62rem] leading-4 text-white/45">{host(project.url)}</span>
         </div>
         <div className="relative aspect-[16/10] overflow-hidden">
           <Image
@@ -59,7 +59,7 @@ export function Showcase() {
 
   return (
     <>
-      <ul className="mt-14 grid gap-6 md:grid-cols-2">
+      <ul className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
         {showcaseProjects.map((p, i) => (
           <li key={p.id}>
             <Reveal delay={(i % 2) * 0.08} className="h-full">
@@ -189,7 +189,7 @@ export function Showcase() {
               </motion.div>
 
               <p className="mt-6 text-muted">{selected.summary}</p>
-              <ul className="mt-5 grid gap-2.5 sm:grid-cols-3">
+              <ul className="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
                 {selected.highlights.map((h) => (
                   <li key={h} className="flex items-start gap-2 rounded-xl border border-line bg-white/[0.03] p-3 text-sm">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-cyan" aria-hidden="true" />

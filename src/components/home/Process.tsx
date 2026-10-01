@@ -34,7 +34,7 @@ export function Process() {
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 24 });
 
   return (
-    <ol ref={ref} className="relative mt-14 grid gap-6 md:grid-cols-4 md:gap-5">
+    <ol ref={ref} className="relative mt-14 grid grid-cols-1 gap-6 md:grid-cols-4 md:gap-5">
       {/* connector line that draws as you scroll */}
       <div className="absolute bottom-7 left-7 top-7 w-px bg-line md:hidden" aria-hidden="true">
         <motion.div

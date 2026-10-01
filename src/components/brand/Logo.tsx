@@ -47,7 +47,8 @@ export function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <span className="flex items-center gap-2.5">
       <LogoMark className="h-9 w-11 shrink-0" />
-      <span className="flex flex-col leading-none">
+      {/* On very narrow phones (under 360px) the compact nav shows the symbol only. */}
+      <span className={`flex-col leading-none ${compact ? "hidden min-[360px]:flex" : "flex"}`}>
         <span className="whitespace-nowrap font-brand text-[1.05rem] font-bold tracking-[0.06em] text-[#F4F7FB]">
           WIDE <span className="bg-gradient-to-r from-brand-teal to-brand-blue bg-clip-text text-transparent">WEB</span>
         </span>

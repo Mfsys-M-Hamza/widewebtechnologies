@@ -32,7 +32,7 @@ export default function ContactPage() {
         intro="Tell us a little about your business and when you'd like to talk. Your request opens in WhatsApp so you can review and send it — our team then confirms your appointment."
       />
 
-      <div className="mx-auto mt-14 grid max-w-6xl gap-8 px-5 sm:px-8 lg:grid-cols-[1.35fr_0.65fr]">
+      <div className="mx-auto mt-14 grid grid-cols-1 max-w-6xl gap-8 px-5 sm:px-8 lg:grid-cols-[1.35fr_0.65fr]">
         <Reveal>
           <section aria-labelledby="form-title" className="edge rounded-[2rem] bg-ink-900/85 p-5 sm:p-9">
             <h2 id="form-title" className="font-display text-2xl font-semibold tracking-tight">
@@ -72,7 +72,7 @@ export default function ContactPage() {
                   <span>
                     <span className="block text-xs uppercase tracking-wider text-subtle">Email</span>
                     {contact.email.verified ? (
-                      <a href={`mailto:${contact.email.value}`} className="text-fg hover:text-electric-soft">
+                      <a href={`mailto:${contact.email.value}`} className="break-all text-fg hover:text-electric-soft">
                         {contact.email.value}
                       </a>
                     ) : (

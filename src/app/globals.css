@@ -51,6 +51,8 @@
 
 html {
   background: var(--color-ink-950);
+  /* Never allow sideways panning on phones (iOS Safari ignores body-only clipping). */
+  overflow-x: clip;
   scroll-padding-top: calc(var(--nav-h) + 1rem);
   scroll-padding-bottom: 6rem;
   -webkit-text-size-adjust: 100%;

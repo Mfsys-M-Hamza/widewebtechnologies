@@ -13,7 +13,7 @@ export function Footer() {
   return (
     <footer className="relative z-[1] mt-24 border-t border-line bg-ink-950 pb-28 sm:pb-12">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-electric/60 to-transparent" aria-hidden="true" />
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 pt-16 sm:px-8 md:grid-cols-12">
+      <div className="mx-auto grid grid-cols-1 max-w-6xl gap-12 px-5 pt-16 sm:px-8 md:grid-cols-12">
         <div className="md:col-span-4">
           {/* Official stacked logo from the brand pack (public/brand) */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -88,7 +88,7 @@ export function Footer() {
               <span>
                 <span className="sr-only">Email: </span>
                 {contact.email.verified ? (
-                  <a href={`mailto:${contact.email.value}`} className="hover:text-fg">
+                  <a href={`mailto:${contact.email.value}`} className="break-all hover:text-fg">
                     {contact.email.value}
                   </a>
                 ) : (

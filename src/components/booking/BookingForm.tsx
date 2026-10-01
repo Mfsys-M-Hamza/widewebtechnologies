@@ -337,7 +337,7 @@ export function BookingForm({ initialService }: { initialService?: string }) {
               Fields marked <span className="text-electric-soft">*</span> are required.
             </p>
 
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <FieldLabel htmlFor={fid("name")}>Full name</FieldLabel>
                 <input

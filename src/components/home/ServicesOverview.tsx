@@ -14,7 +14,7 @@ export function ServicesOverview() {
 
   return (
     <LayoutGroup>
-      <ul className="mt-14 grid grid-flow-dense gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-14 grid grid-cols-1 grid-flow-dense gap-5 md:grid-cols-2 lg:grid-cols-3">
         {services.map((s, i) => {
           const open = openId === s.id;
           // Let a lone card on the last row span the full row (2 columns on tablet, 3 on desktop).
@@ -71,7 +71,7 @@ export function ServicesOverview() {
                     >
                       <div className="pt-6">
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-electric-soft">Typical deliverables</p>
-                        <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                        <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
                           {s.deliverables.map((d, i) => (
                             <motion.li
                               key={d}
