@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><title>Wide Web Technologies icon</title><defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2EE6D6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient>
+<linearGradient id="gw" gradientUnits="userSpaceOnUse" x1="549.95" y1="0" x2="863.214" y2="0"><stop offset="0" stop-color="#2EE6D6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient>
+<linearGradient id="rl" x1="0" x2="1"><stop offset="0" stop-color="rgba(244,247,251,.5)" stop-opacity="0"/><stop offset="1" stop-color="rgba(244,247,251,.5)"/></linearGradient>
+<linearGradient id="rr" x1="1" x2="0"><stop offset="0" stop-color="rgba(244,247,251,.5)" stop-opacity="0"/><stop offset="1" stop-color="rgba(244,247,251,.5)"/></linearGradient>
+<radialGradient id="bg" cx=".5" cy=".42" r=".75"><stop offset="0" stop-color="#0E1630"/><stop offset=".55" stop-color="#070B16"/><stop offset="1" stop-color="#02040A"/></radialGradient>
+<filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.2" result="b"/><feFlood flood-color="#2EE6D6" flood-opacity=".45"/><feComposite in2="b" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs><rect width="512" height="512" rx="112" fill="url(#bg)"/><g transform="translate(76 118) scale(3)" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+<path d="M8 22 Q60 -10 112 22" stroke="url(#g)" stroke-width="2.2"/>
+<path d="M10 24 L60 46 M110 24 L60 46 M35 84 L85 84" stroke="rgba(160,200,255,.45)" stroke-width="1"/>
+<path d="M10 24 L35 84 L60 46 L85 84 L110 24" stroke="url(#g)" stroke-width="7"/><circle cx="10" cy="24" r="5.5" fill="#070B16" stroke="#F4F7FB" stroke-width="2.4"/><circle cx="35" cy="84" r="5.5" fill="#070B16" stroke="#F4F7FB" stroke-width="2.4"/><circle cx="60" cy="46" r="6.5" fill="#070B16" stroke="#F4F7FB" stroke-width="2.4"/><circle cx="85" cy="84" r="5.5" fill="#070B16" stroke="#F4F7FB" stroke-width="2.4"/><circle cx="110" cy="24" r="5.5" fill="#070B16" stroke="#F4F7FB" stroke-width="2.4"/><circle cx="60" cy="46" r="2.6" fill="#2EE6D6" stroke="none"/></g></svg>
