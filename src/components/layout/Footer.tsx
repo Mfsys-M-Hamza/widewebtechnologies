@@ -11,7 +11,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-24 border-t border-line bg-ink-950 pb-28 sm:pb-12">
+    <footer className="relative z-[1] mt-24 border-t border-line bg-ink-950 pb-28 sm:pb-12">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-electric/60 to-transparent" aria-hidden="true" />
       <div className="mx-auto grid max-w-6xl gap-12 px-5 pt-16 sm:px-8 md:grid-cols-12">
         <div className="md:col-span-4">

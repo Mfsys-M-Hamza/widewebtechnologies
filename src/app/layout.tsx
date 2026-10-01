@@ -7,6 +7,7 @@ import { Providers } from "@/components/Providers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
+import { BackgroundFX } from "@/components/layout/BackgroundFX";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 const sora = Sora({ variable: "--font-sora", subsets: ["latin"], display: "swap" });
@@ -77,8 +78,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()).replace(/</g, "\\u003c") }}
         />
         <Providers>
+          {/* Interactive background sits behind everything (z-0); page content is raised to z-[1]. */}
+          <BackgroundFX />
           <Navbar />
-          <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
+          <main id="main" tabIndex={-1} className="relative z-[1] flex-1 focus:outline-none">
             {children}
           </main>
           <Footer />
