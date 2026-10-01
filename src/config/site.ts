@@ -62,7 +62,7 @@ export const siteConfig = {
     whatsapp: { value: "+923040500121", verified: true } satisfies ConfigValue,
     /** How the WhatsApp number is displayed to visitors. */
     whatsappDisplay: { value: "+92 304 0500121", verified: true } satisfies ConfigValue,
-    email: { value: "hello@example.com", verified: false } satisfies ConfigValue,
+    email: { value: "muhammadhamza.job@gmail.com", verified: true } satisfies ConfigValue,
     /** Keep general (city / country) or leave as a placeholder. Do not add an address you don't want published. */
     location: { value: "Islamabad, Pakistan", verified: true } satisfies ConfigValue,
     /** Shown in the footer and contact page; also used as the default timezone in the booking form. */

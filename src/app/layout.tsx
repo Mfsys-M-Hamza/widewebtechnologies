@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Poppins, Sora } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
+import { ogImage } from "@/lib/seo";
 import { Providers } from "@/components/Providers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -25,11 +26,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: [ogImage],
   },
 };
 

@@ -55,8 +55,8 @@ Contact values use `{ value, verified }`. Current state:
 | WhatsApp | +92 304 0500121 | Real |
 | Location | Islamabad, Pakistan | Real |
 | Business hours | Every day, 9:00 AM – 1:00 AM (Asia/Karachi) | Real |
-| Email | `hello@example.com` | **Placeholder** |
-| Site URL | `https://www.example.com` | **Placeholder** (set `NEXT_PUBLIC_SITE_URL`) |
+| Email | muhammadhamza.job@gmail.com | Real |
+| Site URL | `https://mfsys-m-hamza.github.io/widewebtechnologies` on GitHub Pages | Set automatically by the deploy workflow. Locally it falls back to `https://www.example.com` |
 
 While a value is unverified (`verified: false`), the site:
 
@@ -117,7 +117,7 @@ src/
   config/site.ts              ← all editable business content
   lib/whatsapp.ts             ← message builder + wa.me link
   lib/datetime.ts             ← timezone-aware date helpers
-  app/                        ← pages, metadata, sitemap.ts, robots.ts, opengraph-image.tsx, icon.svg
+  app/                        ← pages, metadata, sitemap.ts, robots.ts, icon.svg (social image: public/brand/og-image.png)
   components/
     booking/                  ← booking panel (context), form, contact-page form
     hero/                     ← 3D scene (HeroCanvas), SVG fallback, loader (HeroVisual)
@@ -135,9 +135,25 @@ src/
 - **Reduced motion.** The `prefers-reduced-motion` setting is respected. It turns off CSS floating, scroll parallax, pointer tilt and the 3D scene's motion; Motion animations fall back to simple fades.
 - **Dialogs.** The booking panel, mobile menu and project previews use the native `<dialog>` element. That gives them focus trapping, Escape to close, and focus returning to the button that opened them.
 
-## Deployment
+## Deployment (GitHub Pages)
 
-The site hasn't been deployed. It builds as fully static pages, so any Next.js host works. Before deploying:
+Live site: **https://mfsys-m-hamza.github.io/widewebtechnologies/**
 
-1. Set `NEXT_PUBLIC_SITE_URL` to your real domain.
-2. Replace the placeholder email in `src/config/site.ts` and set `verified: true`.
+Every push to `main` runs `.github/workflows/deploy-pages.yml`, which:
+
+1. builds a static copy of the site (`STATIC_EXPORT=true`) under the `/widewebtechnologies` base path,
+2. runs `scripts/fix-static-prefetch.mjs` so page prefetching works on static hosting, and
+3. publishes the `out/` folder to GitHub Pages.
+
+**One-time setup:** in the repository go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**.
+
+To preview the GitHub Pages build locally:
+
+```bash
+STATIC_EXPORT=true NEXT_PUBLIC_BASE_PATH=/widewebtechnologies npm run build
+node scripts/fix-static-prefetch.mjs out
+```
+
+**Custom domain:** add the domain under Settings → Pages, then set the repository Actions variable `SITE_URL` (e.g. `https://www.widewebtechnologies.com`). The workflow then builds without the `/widewebtechnologies` base path.
+
+**Social sharing image:** `public/brand/og-image.png` (1200×630). Replace it if you change the tagline or branding.

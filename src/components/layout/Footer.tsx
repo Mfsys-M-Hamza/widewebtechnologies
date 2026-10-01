@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Clock, Mail, MapPin } from "lucide-react";
 import { navLinks, services, siteConfig } from "@/config/site";
+import { asset } from "@/lib/asset";
 import { ChatIcon } from "@/components/ui/ChatIcon";
 import { ConfigText, PlaceholderTag } from "@/components/ui/Placeholder";
 
@@ -16,7 +17,7 @@ export function Footer() {
         <div className="md:col-span-4">
           {/* Official stacked logo from the brand pack (public/brand) */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/logo-white.svg" alt={siteConfig.name} width={180} height={138} className="h-auto w-44" />
+          <img src={asset("/brand/logo-white.svg")} alt={siteConfig.name} width={180} height={138} className="h-auto w-44" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
             {siteConfig.tagline} Business website development, responsive web design and practical IT services.
           </p>

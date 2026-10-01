@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { openGraphFor } from "@/lib/seo";
 import { Check, Info } from "lucide-react";
 import { services } from "@/config/site";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Business and informational websites, landing pages, mobile-responsive web design, basic on-page SEO setup, website and mobile app QA testing, and website maintenance from Wide Web Technologies.",
   alternates: { canonical: "/services" },
-  openGraph: { title: "Website Services | Wide Web Technologies", url: "/services" },
+  openGraph: openGraphFor("Website Services | Wide Web Technologies", "/services"),
 };
 
 export default function ServicesPage() {

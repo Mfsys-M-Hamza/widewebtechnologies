@@ -2,6 +2,7 @@
 
 import { RotateCcw, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { asset } from "@/lib/asset";
 
 /**
  * Brand logo animation (public/brand/logo-animation.mp4, 1080x1920).
@@ -39,13 +40,13 @@ export function HeroVideo() {
           muted
           playsInline
           preload="auto"
-          poster="/brand/logo-poster.jpg"
+          poster={asset("/brand/logo-poster.jpg")}
           onPlay={() => setState("playing")}
           onEnded={() => setState("ended")}
           aria-hidden="true"
           tabIndex={-1}
         >
-          <source src="/brand/logo-animation.mp4" type="video/mp4" />
+          <source src={asset("/brand/logo-animation.mp4")} type="video/mp4" />
         </video>
       </div>
       {state !== "playing" ? (

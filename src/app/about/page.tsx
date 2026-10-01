@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { openGraphFor } from "@/lib/seo";
 import { Compass, Gem, HeartHandshake, RefreshCcw, ScanEye, ShieldCheck, Target } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { PageHero } from "@/components/layout/PageHero";
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Learn about Wide Web Technologies: an IT services and website development company focused on clear communication, quality work and practical websites for businesses.",
   alternates: { canonical: "/about" },
-  openGraph: { title: "About | Wide Web Technologies", url: "/about" },
+  openGraph: openGraphFor("About | Wide Web Technologies", "/about"),
 };
 
 /* Copy below is intentionally general and editable — replace it with your own story when ready. */

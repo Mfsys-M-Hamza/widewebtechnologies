@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { openGraphFor } from "@/lib/seo";
 import { Suspense } from "react";
 import { Clock, Mail, MapPin } from "lucide-react";
 import { siteConfig } from "@/config/site";
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   description:
     "Request a free website consultation with Wide Web Technologies on WhatsApp. Choose a service, your preferred date, time and timezone, and our team will confirm.",
   alternates: { canonical: "/contact" },
-  openGraph: { title: "Contact & Book a Consultation | Wide Web Technologies", url: "/contact" },
+  openGraph: openGraphFor("Contact & Book a Consultation | Wide Web Technologies", "/contact"),
 };
 
 export default function ContactPage() {

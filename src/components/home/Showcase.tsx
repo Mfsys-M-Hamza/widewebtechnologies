@@ -8,6 +8,7 @@ import { showcaseProjects, type ShowcaseProject } from "@/config/site";
 import { AnimatedDialog } from "@/components/ui/AnimatedDialog";
 import { useBooking } from "@/components/booking/BookingProvider";
 import { Reveal } from "@/components/ui/Reveal";
+import { asset } from "@/lib/asset";
 
 const host = (url: string) => new URL(url).hostname.replace(/^www\./, "");
 
@@ -24,7 +25,7 @@ function DeviceShots({ project, large = false }: { project: ShowcaseProject; lar
         </div>
         <div className="relative aspect-[16/10] overflow-hidden">
           <Image
-            src={project.images.desktop}
+            src={asset(project.images.desktop)}
             alt={`${project.title} website shown on a desktop screen`}
             fill
             sizes={large ? "(min-width: 768px) 720px, 92vw" : "(min-width: 768px) 520px, 88vw"}
@@ -39,7 +40,7 @@ function DeviceShots({ project, large = false }: { project: ShowcaseProject; lar
       >
         <div className="relative aspect-[390/844]">
           <Image
-            src={project.images.mobile}
+            src={asset(project.images.mobile)}
             alt={`${project.title} website shown on a mobile phone`}
             fill
             sizes={large ? "180px" : "140px"}
