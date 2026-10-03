@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Eye, Laptop, Layers, MessagesSquare, Monitor, MonitorSmartphone, Smartphone, Wrench } from "lucide-react";
-import { siteConfig } from "@/config/site";
+import { faqs, siteConfig } from "@/config/site";
 import { HeroVisual } from "@/components/hero/HeroVisual";
 import { HeroVideo } from "@/components/hero/HeroVideo";
 import { BookingButton } from "@/components/booking/BookingProvider";
 import { ChatIcon } from "@/components/ui/ChatIcon";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { ServicesOverview } from "@/components/home/ServicesOverview";
 import { Showcase } from "@/components/home/Showcase";
 import { Process } from "@/components/home/Process";
@@ -47,6 +48,17 @@ const reasons = [
     className: "md:col-span-2",
   },
 ];
+
+/** FAQ structured data so search engines can show these answers as rich results. */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 
 export default function HomePage() {
   return (
@@ -205,7 +217,7 @@ export default function HomePage() {
         <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3">
           {reasons.map((r, i) => (
             <Reveal key={r.title} delay={i * 0.06} className={r.className}>
-              <div className="edge group relative h-full overflow-hidden rounded-[1.6rem] bg-ink-900/80 p-7 transition hover:bg-ink-850 sm:p-8">
+              <SpotlightCard className="edge h-full overflow-hidden rounded-[1.6rem] bg-ink-900/80 p-7 transition hover:bg-ink-850 sm:p-8">
                 <div className="pointer-events-none absolute inset-0 dot-texture opacity-40 [mask-image:linear-gradient(to_bottom_left,#000,transparent_60%)]" aria-hidden="true" />
                 <div className="relative">
                   <div className="relative grid h-14 w-14 place-items-center">
@@ -216,7 +228,7 @@ export default function HomePage() {
                   <h3 className="mt-6 font-display text-xl font-semibold">{r.title}</h3>
                   <p className="mt-2 max-w-md leading-relaxed text-muted">{r.text}</p>
                 </div>
-              </div>
+              </SpotlightCard>
             </Reveal>
           ))}
         </div>
@@ -251,6 +263,10 @@ export default function HomePage() {
         <Reveal>
           <FAQ />
         </Reveal>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
+        />
       </section>
 
       <ConsultationCTA />

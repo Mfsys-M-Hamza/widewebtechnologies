@@ -84,6 +84,24 @@ body {
   border-radius: 0.6rem;
 }
 
+/* Tailwind v4 resets buttons to the default cursor; restore the pointer on everything clickable */
+:where(button:not(:disabled), [role="button"], summary, select, input[type="date"], input[type="time"]) {
+  cursor: pointer;
+}
+
+/* Removes the double-tap zoom delay on controls (pinch-zoom still works) */
+:where(a, button, summary, select, input, textarea, label) {
+  touch-action: manipulation;
+}
+
+/* Balanced headings avoid one-word last lines; pretty prose avoids orphans */
+:where(h1, h2, h3) {
+  text-wrap: balance;
+}
+:where(p, li) {
+  text-wrap: pretty;
+}
+
 /* Page background: subtle technical grid + soft light pools */
 .site-bg {
   background-image:

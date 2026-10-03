@@ -8,11 +8,19 @@ import { faqs } from "@/config/site";
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div className="divide-y divide-line rounded-[1.6rem] border border-line bg-ink-900/60">
+    <div className="space-y-3">
       {faqs.map((f, i) => {
         const isOpen = open === i;
         return (
-          <div key={f.q}>
+          // The open question gets a tinted surface and accent border so it stands out from the rest.
+          <div
+            key={f.q}
+            className={`rounded-2xl border transition-colors duration-300 ${
+              isOpen
+                ? "border-electric/40 bg-gradient-to-br from-electric/[0.09] to-violet/[0.05] shadow-glow"
+                : "border-line bg-ink-900/60 hover:border-ink-600 hover:bg-ink-900/80"
+            }`}
+          >
             <h3>
               <button
                 type="button"
@@ -20,12 +28,12 @@ export function FAQ() {
                 aria-expanded={isOpen}
                 aria-controls={`faq-a-${i}`}
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="flex min-h-16 w-full items-center justify-between gap-4 px-5 py-4 text-left font-display text-base font-semibold sm:px-7 sm:text-lg"
+                className="flex min-h-16 w-full items-center justify-between gap-4 rounded-2xl px-5 py-4 text-left font-display text-base font-semibold sm:px-7 sm:text-lg"
               >
                 {f.q}
                 <span
                   className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border transition ${
-                    isOpen ? "rotate-180 border-electric/60 bg-electric/15" : "border-line"
+                    isOpen ? "rotate-180 border-electric/60 bg-electric/15 text-electric-soft" : "border-line"
                   }`}
                   aria-hidden="true"
                 >

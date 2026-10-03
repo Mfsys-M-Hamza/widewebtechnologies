@@ -204,7 +204,7 @@ export function BookingForm({ initialService }: { initialService?: string }) {
     [hint ? fid(`${f}-hint`) : null, errors[f] ? fid(`${f}-error`) : null].filter(Boolean).join(" ") || undefined;
 
   const inputClass = (f: Field) =>
-    `mt-2 block w-full rounded-xl border bg-ink-950/60 px-4 py-3 text-[0.95rem] text-fg placeholder:text-subtle shadow-[inset_0_1px_0_rgb(255_255_255/0.03)] transition focus:border-electric focus:bg-ink-950 focus:outline-none focus-visible:outline-2 focus-visible:outline-electric-soft ${
+    `mt-2 block w-full rounded-xl border bg-ink-950/60 px-4 py-3 text-base text-fg placeholder:text-subtle shadow-[inset_0_1px_0_rgb(255_255_255/0.03)] transition focus:border-electric focus:bg-ink-950 focus:outline-none focus-visible:outline-2 focus-visible:outline-electric-soft ${
       errors[f] ? "border-danger/70" : "border-line hover:border-ink-600"
     }`;
 

@@ -17,7 +17,7 @@ function DeviceShots({ project, large = false }: { project: ShowcaseProject; lar
   return (
     <div className={`relative ${large ? "pb-6 pr-6 sm:pb-10 sm:pr-16" : "pb-5 pr-10"}`}>
       <div className="overflow-hidden rounded-xl border border-white/10 bg-ink-950 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.9)]">
-        <div className="flex items-center gap-1.5 border-b border-white/10 bg-[#111833] px-3 py-2">
+        <div className="flex items-center gap-1.5 border-b border-white/10 bg-[#111833] px-3 py-2" aria-hidden="true">
           <span className="h-2 w-2 rounded-full bg-[#ff6b6b]/80" />
           <span className="h-2 w-2 rounded-full bg-[#f5c451]/80" />
           <span className="h-2 w-2 rounded-full bg-[#4ade80]/80" />
