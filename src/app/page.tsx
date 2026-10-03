@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Eye, Laptop, Layers, MessagesSquare, Monitor, MonitorSmartphone, Smartphone, Wrench } from "lucide-react";
-import { faqs, siteConfig } from "@/config/site";
+import { faqs, showcaseProjects, siteConfig } from "@/config/site";
+import { asset } from "@/lib/asset";
+import { PanoramicSpread, type SpreadItem } from "@/components/ui/PanoramicSpread";
 import { HeroVisual } from "@/components/hero/HeroVisual";
 import { HeroVideo } from "@/components/hero/HeroVideo";
 import { BookingButton } from "@/components/booking/BookingProvider";
@@ -12,6 +14,7 @@ import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { ServicesOverview } from "@/components/home/ServicesOverview";
 import { Showcase } from "@/components/home/Showcase";
 import { Process } from "@/components/home/Process";
+import { PromoAnimation } from "@/components/home/PromoAnimation";
 import { FAQ } from "@/components/home/FAQ";
 import { ConsultationCTA } from "@/components/home/ConsultationCTA";
 
@@ -48,6 +51,16 @@ const reasons = [
     className: "md:col-span-2",
   },
 ];
+
+/**
+ * Showcase screenshots for the panoramic gallery: desktop and phone shots alternate,
+ * with phones shifted by one project so neighbouring cards show different sites.
+ * Alt text is empty because the project grid right below describes each site.
+ */
+const spreadItems: SpreadItem[] = showcaseProjects.flatMap((p, i) => [
+  { src: asset(p.images.desktop), alt: "", kind: "desktop" as const },
+  { src: asset(showcaseProjects[(i + 1) % showcaseProjects.length].images.mobile), alt: "", kind: "mobile" as const },
+]);
 
 /** FAQ structured data so search engines can show these answers as rich results. */
 const faqJsonLd = {
@@ -119,6 +132,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* PROMO — 24s animated overview */}
+      <section aria-labelledby="promo-title" className="mx-auto mt-20 max-w-6xl px-5 sm:mt-28 sm:px-8">
+        <SectionHeading
+          id="promo-title"
+          eyebrow="See how it works"
+          align="center"
+          title={
+            <>
+              From first message to <span className="text-gradient">live website</span>
+            </>
+          }
+          intro="A quick look at how we take your idea from a WhatsApp chat to a fast website that works on every device."
+        />
+        <Reveal className="mt-10">
+          <PromoAnimation />
+        </Reveal>
+        <Reveal className="mt-8 flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-5">
+          <p className="text-muted">Like what you see? Let&apos;s plan yours.</p>
+          <BookingButton className="group inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-brand-teal to-brand-blue px-6 font-semibold text-ink-950 shadow-[0_14px_40px_-12px_rgb(46_230_214/0.6)] transition hover:brightness-110">
+            <ChatIcon className="h-5 w-5 transition group-hover:-rotate-6" />
+            Book a Free Consultation
+          </BookingButton>
+        </Reveal>
+      </section>
+
       {/* EVERY SCREEN — interactive 3D workspace */}
       <section aria-labelledby="screens-title" className="mx-auto mt-20 max-w-6xl px-5 sm:mt-28 sm:px-8">
         <div className="edge relative grid grid-cols-1 items-center gap-8 overflow-hidden rounded-[2rem] bg-ink-900/60 p-5 sm:p-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
@@ -184,19 +222,22 @@ export default function HomePage() {
       </section>
 
       {/* SHOWCASE */}
-      <section aria-labelledby="work-title" className="relative mt-28 sm:mt-36">
-        <div className="pointer-events-none absolute inset-x-0 top-24 h-[36rem] bg-[radial-gradient(50%_50%_at_50%_50%,rgb(79_140_255/0.10),transparent)]" aria-hidden="true" />
+      <section aria-labelledby="work-title" className="relative mt-16 sm:mt-24">
+        {/* Screenshots fan out into an arch on scroll; the project grid below has the details and links. */}
+        <PanoramicSpread items={spreadItems}>
+          <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-electric-soft">
+            <span className="h-px w-6 bg-gradient-to-r from-electric to-violet" aria-hidden="true" />
+            Our work
+          </p>
+          <h2 id="work-title" className="mt-4 font-display text-3xl font-semibold tracking-tight text-fg sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+            Websites we&apos;ve <span className="text-gradient">developed</span>
+          </h2>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+            Live websites we&apos;ve designed and built for businesses — on desktop and on mobile.
+          </p>
+        </PanoramicSpread>
         <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
-          <SectionHeading
-            id="work-title"
-            eyebrow="Our work"
-            title={
-              <>
-                Websites we&apos;ve <span className="text-gradient">developed</span>
-              </>
-            }
-            intro="Live websites we&apos;ve designed and built for businesses. Select a project to see it on desktop and mobile, or visit the live site."
-          />
+          <p className="text-center text-muted">Select a project to see it on desktop and mobile, or visit the live site.</p>
           <Showcase />
         </div>
       </section>
