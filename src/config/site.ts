@@ -287,6 +287,17 @@ export const showcaseProjects: ShowcaseProject[] = [
     images: { desktop: "/projects/dental-desktop.jpg", mobile: "/projects/dental-mobile.jpg" },
     accent: "#14a37f",
   },
+  {
+    id: "voo-calculator",
+    title: "VOO Calculator",
+    category: "Finance Web Tool",
+    url: "https://voocalculator.net/",
+    summary:
+      "A free investment calculator for the Vanguard S&P 500 ETF (VOO). Visitors project growth from contributions, dividends and an assumed return — no signup, and it runs right in the browser.",
+    highlights: ["Growth, dividend and DRIP calculators", "VOO quote and year-by-year breakdown", "Guides, comparisons and FAQs"],
+    images: { desktop: "/projects/voo-desktop.jpg", mobile: "/projects/voo-mobile.jpg" },
+    accent: "#c8962e",
+  },
 ];
 
 export const faqs = [

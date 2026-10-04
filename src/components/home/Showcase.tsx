@@ -61,7 +61,15 @@ export function Showcase() {
     <>
       <ul className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
         {showcaseProjects.map((p, i) => (
-          <li key={p.id}>
+          // A lone card on the last row is centred instead of sitting on the left.
+          <li
+            key={p.id}
+            className={
+              i === showcaseProjects.length - 1 && showcaseProjects.length % 2 === 1
+                ? "md:col-span-2 md:mx-auto md:w-[calc(50%-0.75rem)]"
+                : undefined
+            }
+          >
             <Reveal delay={(i % 2) * 0.08} className="h-full">
               <article className="edge glass group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] p-3">
                 <div className="relative overflow-hidden rounded-[1.25rem] bg-ink-850 p-5 sm:p-7">
