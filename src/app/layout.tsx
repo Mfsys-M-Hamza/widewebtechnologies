@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { BackgroundFX } from "@/components/layout/BackgroundFX";
+import { EdgeSpotlight } from "@/components/layout/EdgeSpotlight";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 const sora = Sora({ variable: "--font-sora", subsets: ["latin"], display: "swap" });
@@ -86,7 +87,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </main>
           <Footer />
           <FloatingWhatsApp />
+          <EdgeSpotlight />
         </Providers>
+        <div className="grain" aria-hidden="true" />
       </body>
     </html>
   );
