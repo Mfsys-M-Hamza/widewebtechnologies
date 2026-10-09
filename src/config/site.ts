@@ -298,6 +298,18 @@ export const showcaseProjects: ShowcaseProject[] = [
     images: { desktop: "/projects/voo-desktop.jpg", mobile: "/projects/voo-mobile.jpg" },
     accent: "#c8962e",
   },
+  {
+    id: "my-mechanic",
+    title: "My Mechanic.pk",
+    category: "Business Website",
+    location: "Wah Cantt",
+    url: "https://www.mymechanic.online/",
+    summary:
+      "A bold website for a car repair workshop running since 1998, presenting EFI and hybrid specialist services, car inspections and spare parts across two branches, with booking, WhatsApp and call buttons on every screen.",
+    highlights: ["Services, car inspections and spare parts", "Two branches with hours and payment options", "Appointment, WhatsApp and call buttons"],
+    images: { desktop: "/projects/mechanic-desktop.jpg", mobile: "/projects/mechanic-mobile.jpg" },
+    accent: "#f5b400",
+  },
 ];
 
 export const faqs = [
