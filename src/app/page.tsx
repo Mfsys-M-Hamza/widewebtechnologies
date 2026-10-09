@@ -55,12 +55,21 @@ const reasons = [
 /**
  * Showcase screenshots for the panoramic gallery: desktop and phone shots alternate,
  * with phones shifted by one project so neighbouring cards show different sites.
+ * Capped so the arch stays readable as the portfolio grows.
  * Alt text is empty because the project grid right below describes each site.
  */
-const spreadItems: SpreadItem[] = showcaseProjects.flatMap((p, i) => [
-  { src: asset(p.images.desktop), alt: "", kind: "desktop" as const },
-  { src: asset(showcaseProjects[(i + 1) % showcaseProjects.length].images.mobile), alt: "", kind: "mobile" as const },
-]);
+const SPREAD_MAX = 10;
+const spreadDesktops: SpreadItem[] = showcaseProjects.map((p) => ({ src: asset(p.images.desktop), alt: "", kind: "desktop" }));
+const spreadPhones: SpreadItem[] = showcaseProjects.flatMap((p) =>
+  p.platform === "desktop" ? [] : [{ src: asset(p.images.mobile), alt: "", kind: "mobile" as const }],
+);
+const spreadItems: SpreadItem[] = spreadDesktops
+  .flatMap((d, i) => {
+    const phone = spreadPhones.length ? spreadPhones[(i + 1) % spreadPhones.length] : undefined;
+    return phone ? [d, phone] : [d];
+  })
+  .filter((item, i, all) => all.findIndex((x) => x.src === item.src) === i)
+  .slice(0, SPREAD_MAX);
 
 /** FAQ structured data so search engines can show these answers as rich results. */
 const faqJsonLd = {

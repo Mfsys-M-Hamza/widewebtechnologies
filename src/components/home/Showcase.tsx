@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import { ArrowUpRight, Check, ExternalLink, MapPin, X } from "lucide-react";
+import { ArrowUpRight, Check, ExternalLink, MapPin, MonitorPlay, X } from "lucide-react";
 import { useRef, useState } from "react";
 import { showcaseProjects, type ShowcaseProject } from "@/config/site";
 import { AnimatedDialog } from "@/components/ui/AnimatedDialog";
@@ -12,8 +12,37 @@ import { asset } from "@/lib/asset";
 
 const host = (url: string) => new URL(url).hostname.replace(/^www\./, "");
 
-/** Desktop screenshot in a browser frame with the mobile screenshot overlapping it. */
+/** Desktop software: the app window screenshot (its own title bar included) with a detail shot overlapping it. */
+function AppShots({ project, large }: { project: Extract<ShowcaseProject, { platform: "desktop" }>; large: boolean }) {
+  return (
+    <div className={`relative ${large ? "pb-6 pr-6 sm:pb-10 sm:pr-16" : "pb-5 pr-10"}`}>
+      <div className="overflow-hidden rounded-xl border border-white/10 bg-ink-950 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.9)]">
+        <div className="relative aspect-[1100/680] overflow-hidden">
+          <Image
+            src={asset(project.images.desktop)}
+            alt={`${project.title} app on a Windows PC`}
+            fill
+            sizes={large ? "(min-width: 768px) 720px, 92vw" : "(min-width: 768px) 520px, 88vw"}
+            className={`object-cover object-top ${large ? "" : "transition-transform duration-700 ease-out group-hover:scale-[1.04]"}`}
+          />
+        </div>
+      </div>
+      <div
+        className={`absolute bottom-0 right-0 overflow-hidden rounded-lg border-[3px] border-[#1d2750] bg-ink-950 shadow-[0_20px_40px_-12px_rgb(0_0_0/0.9)] ${
+          large ? "w-[36%] sm:w-[32%]" : "w-[42%] transition-transform duration-500 ease-out group-hover:-translate-y-2 group-hover:rotate-[-2deg]"
+        }`}
+      >
+        <div className="relative aspect-[2/1]">
+          <Image src={asset(project.images.detail)} alt={`${project.title} detail screen`} fill sizes={large ? "260px" : "220px"} className="object-cover" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Website: desktop screenshot in a browser frame with the mobile screenshot overlapping it. */
 function DeviceShots({ project, large = false }: { project: ShowcaseProject; large?: boolean }) {
+  if (project.platform === "desktop") return <AppShots project={project} large={large} />;
   return (
     <div className={`relative ${large ? "pb-6 pr-6 sm:pb-10 sm:pr-16" : "pb-5 pr-10"}`}>
       <div className="overflow-hidden rounded-xl border border-white/10 bg-ink-950 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.9)]">
@@ -107,15 +136,27 @@ export function Showcase() {
                   </h3>
                   <p className="mt-1.5 line-clamp-2 text-sm text-muted">{p.summary}</p>
                   <div className="mt-auto flex items-center justify-between gap-3 pt-5">
-                    <a
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative z-10 inline-flex min-h-11 items-center gap-2 rounded-full border border-line bg-white/5 px-4 text-sm font-semibold text-fg transition hover:border-cyan/50 hover:bg-cyan/10"
-                    >
-                      Visit live site <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                      <span className="sr-only">(opens {p.title} in a new tab)</span>
-                    </a>
+                    {p.platform === "desktop" ? (
+                      <button
+                        type="button"
+                        onClick={() => openBooking()}
+                        aria-haspopup="dialog"
+                        className="relative z-10 inline-flex min-h-11 items-center gap-2 rounded-full border border-line bg-white/5 px-4 text-sm font-semibold text-fg transition hover:border-cyan/50 hover:bg-cyan/10"
+                      >
+                        Ask for a demo <MonitorPlay className="h-4 w-4" aria-hidden="true" />
+                        <span className="sr-only">of {p.title}</span>
+                      </button>
+                    ) : (
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative z-10 inline-flex min-h-11 items-center gap-2 rounded-full border border-line bg-white/5 px-4 text-sm font-semibold text-fg transition hover:border-cyan/50 hover:bg-cyan/10"
+                      >
+                        Visit live site <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                        <span className="sr-only">(opens {p.title} in a new tab)</span>
+                      </a>
+                    )}
                     <span
                       className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line bg-white/5 transition group-hover:rotate-45 group-hover:border-electric/60 group-hover:bg-electric/20"
                       aria-hidden="true"
@@ -206,26 +247,43 @@ export function Showcase() {
                 ))}
               </ul>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={selected.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-teal to-brand-blue px-6 font-semibold text-ink-950 transition hover:brightness-110"
-                >
-                  Visit live site <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                  <span className="sr-only">(opens in a new tab)</span>
-                </a>
-                <button
-                  type="button"
-                  aria-haspopup="dialog"
-                  onClick={() => {
-                    bookAfterClose.current = true;
-                    setSelected(null);
-                  }}
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-line bg-white/5 px-6 font-semibold text-fg transition hover:bg-white/10"
-                >
-                  Discuss a similar website
-                </button>
+                {selected.platform === "desktop" ? (
+                  <button
+                    type="button"
+                    aria-haspopup="dialog"
+                    onClick={() => {
+                      bookAfterClose.current = true;
+                      setSelected(null);
+                    }}
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-teal to-brand-blue px-6 font-semibold text-ink-950 transition hover:brightness-110"
+                  >
+                    <MonitorPlay className="h-4 w-4" aria-hidden="true" />
+                    Ask for a demo or similar software
+                  </button>
+                ) : (
+                  <>
+                    <a
+                      href={selected.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-teal to-brand-blue px-6 font-semibold text-ink-950 transition hover:brightness-110"
+                    >
+                      Visit live site <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                      <span className="sr-only">(opens in a new tab)</span>
+                    </a>
+                    <button
+                      type="button"
+                      aria-haspopup="dialog"
+                      onClick={() => {
+                        bookAfterClose.current = true;
+                        setSelected(null);
+                      }}
+                      className="inline-flex min-h-12 items-center justify-center rounded-full border border-line bg-white/5 px-6 font-semibold text-fg transition hover:bg-white/10"
+                    >
+                      Discuss a similar website
+                    </button>
+                  </>
+                )}
               </div>
             </motion.div>
           </motion.div>

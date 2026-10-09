@@ -28,21 +28,34 @@ export type Service = {
   note?: string;
 };
 
-export type ShowcaseProject = {
+type ShowcaseProjectBase = {
   id: string;
   title: string;
   category: string;
   /** City or area shown on the card (optional). */
   location?: string;
-  /** Live website address. */
-  url: string;
   summary: string;
   highlights: string[];
-  /** Screenshots in /public/projects (desktop 1440x900, mobile 390x844 at 2x). */
-  images: { desktop: string; mobile: string };
   /** Brand accent used for the card glow. */
   accent: string;
 };
+
+export type ShowcaseProject =
+  | (ShowcaseProjectBase & {
+      /** A website (the default). */
+      platform?: "web";
+      /** Live website address. */
+      url: string;
+      /** Screenshots in /public/projects (desktop 1440x900, mobile 390x844 at 2x). */
+      images: { desktop: string; mobile: string };
+    })
+  | (ShowcaseProjectBase & {
+      /** Desktop software: no live link; visitors are offered a demo instead. */
+      platform: "desktop";
+      url?: undefined;
+      /** Main app window screenshot (window frame included) and a smaller detail shot shown overlapping it. */
+      images: { desktop: string; detail: string };
+    });
 
 export const siteConfig = {
   name: "Wide Web Technologies",
@@ -309,6 +322,17 @@ export const showcaseProjects: ShowcaseProject[] = [
     highlights: ["Services, car inspections and spare parts", "Two branches with hours and payment options", "Appointment, WhatsApp and call buttons"],
     images: { desktop: "/projects/mechanic-desktop.jpg", mobile: "/projects/mechanic-mobile.jpg" },
     accent: "#f5b400",
+  },
+  {
+    id: "gym-manager",
+    title: "Gym Manager",
+    category: "Desktop Software",
+    platform: "desktop",
+    summary:
+      "An offline Windows app for running a gym: members, plans and renewals, fingerprint or quick check-in, payments and dues, a shop with point of sale, staff salaries and expenses, with separate admin and receptionist logins.",
+    highlights: ["Fingerprint and quick check-in", "Payments, dues, shop and expenses", "37 reports to PDF and Excel"],
+    images: { desktop: "/projects/gym-desktop.png", detail: "/projects/gym-detail.png" },
+    accent: "#2563eb",
   },
 ];
 
