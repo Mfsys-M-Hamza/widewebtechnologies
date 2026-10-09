@@ -203,9 +203,11 @@ body {
 }
 
 /* Press feedback: buttons and pill links sink slightly when clicked.
-   In the base layer so Tailwind utilities (and motion's inline transforms) still win. */
+   In the base layer so Tailwind utilities (and motion's inline transforms) still win.
+   .no-press opts out stretched "whole card" buttons: a transform would shrink their
+   card-sized ::after hit area mid-click, so the click would never register. */
 @layer base {
-  :where(button:not(:disabled), a[class*="rounded-full"]):active {
+  :where(button:not(:disabled):not(.no-press), a[class*="rounded-full"]):active {
     transform: translateY(1px) scale(0.985);
   }
 }

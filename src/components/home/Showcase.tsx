@@ -123,12 +123,14 @@ export function Showcase() {
                     ) : null}
                   </div>
                   <h3 className="mt-2.5 font-display text-xl font-semibold tracking-tight">
-                    {/* the stretched button makes the whole card open the preview */}
+                    {/* The stretched button makes the whole card open the preview. Its hit area sits at z-5 so the
+                        hover-animated screenshots and arrow (transforms lift them) can't swallow the click;
+                        the live-site link stays above it at z-10. */}
                     <button
                       type="button"
                       onClick={() => setSelected(p)}
                       aria-haspopup="dialog"
-                      className="text-left after:absolute after:inset-0 after:rounded-[1.75rem] after:content-[''] focus-visible:outline-none focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-electric-soft"
+                      className="no-press text-left after:absolute after:inset-0 after:z-[5] after:rounded-[1.75rem] after:content-[''] focus-visible:outline-none focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-electric-soft"
                     >
                       {p.title}
                       <span className="sr-only"> — open project preview</span>
