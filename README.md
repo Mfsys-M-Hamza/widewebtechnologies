@@ -55,7 +55,7 @@ Contact values use `{ value, verified }`. Current state:
 | WhatsApp | +92 304 0500121 | Real |
 | Location | Islamabad, Pakistan | Real |
 | Business hours | Every day, 9:00 AM – 1:00 AM (Asia/Karachi) | Real |
-| Email | muhammadhamza.job@gmail.com | Real |
+| Email | widewebtechnologie@gmail.com | Real |
 | Site URL | `https://mfsys-m-hamza.github.io/widewebtechnologies` on GitHub Pages | Set automatically by the deploy workflow. Locally it falls back to `https://www.example.com` |
 
 While a value is unverified (`verified: false`), the site:
