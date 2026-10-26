@@ -36,6 +36,8 @@ type ShowcaseProjectBase = {
   location?: string;
   summary: string;
   highlights: string[];
+  /** Technologies used, shown as small tags in the project preview (optional). */
+  tech?: string[];
   /** Brand accent used for the card glow. */
   accent: string;
 };
@@ -304,10 +306,15 @@ export const showcaseProjects: ShowcaseProject[] = [
     id: "voo-calculator",
     title: "VOO Calculator",
     category: "Finance Web Tool",
-    url: "https://voocalculator.net/",
+    url: "https://voocalculator.net",
     summary:
-      "A free investment calculator for the Vanguard S&P 500 ETF (VOO). Visitors project growth from contributions, dividends and an assumed return — no signup, and it runs right in the browser.",
-    highlights: ["Growth, dividend and DRIP calculators", "VOO quote and year-by-year breakdown", "Guides, comparisons and FAQs"],
+      "A free investment calculator site for Vanguard's S&P 500 ETF (VOO), built with Next.js. It includes a projection calculator, a backtest calculator that uses VOO's real monthly prices since 2010, live dividend data, and Traditional Chinese pages for Hong Kong investors.",
+    highlights: [
+      "Projection and backtest calculators",
+      "Real monthly VOO prices since 2010 and live dividend data",
+      "Traditional Chinese pages for Hong Kong investors",
+    ],
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
     images: { desktop: "/projects/voo-desktop.jpg", mobile: "/projects/voo-mobile.jpg" },
     accent: "#c8962e",
   },

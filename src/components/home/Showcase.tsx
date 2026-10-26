@@ -248,6 +248,18 @@ export function Showcase() {
                   </li>
                 ))}
               </ul>
+              {selected.tech?.length ? (
+                <div className="mt-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-subtle">Built with</p>
+                  <ul className="mt-2.5 flex flex-wrap gap-2">
+                    {selected.tech.map((t) => (
+                      <li key={t} className="rounded-md border border-line bg-white/[0.04] px-2.5 py-1 text-xs font-medium text-fg/90">
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 {selected.platform === "desktop" ? (
                   <button
